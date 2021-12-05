@@ -150,6 +150,7 @@ main {
 
 .dice {
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+  border-radius: 2rem;
   height: 10rem;
   left: 50%;
   position: absolute;
