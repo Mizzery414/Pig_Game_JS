@@ -34,43 +34,47 @@ const switchPlayer = function () {
 
 // Rolling dice functionality
 btnRoll.addEventListener("click", function () {
-  // 1. Generate random dice roll
-  const dice = Math.trunc(Math.random() * 6) + 1;
+  if (playing) {
+    // 1. Generate random dice roll
+    const dice = Math.trunc(Math.random() * 6) + 1;
 
-  // 2. Display dice roll
-  diceEl.classList.remove("hidden");
-  diceEl.src = `dice-${dice}.png`;
+    // 2. Display dice roll
+    diceEl.classList.remove("hidden");
+    diceEl.src = `dice-${dice}.png`;
 
-  // 3. Check for a roll of 1
-  if (dice !== 1) {
-    // 3b. Add dice to current score
-    currentScore += dice;
-    document.getElementById(`score--${activePlayer}`).textContent =
-      currentScore;
-  } else {
-    switchPlayer();
-    // 4. If true, switch to next player
+    // 3. Check for a roll of 1
+    if (dice !== 1) {
+      // 3b. Add dice to current score
+      currentScore += dice;
+      document.getElementById(`score--${activePlayer}`).textContent =
+        currentScore;
+    } else {
+      switchPlayer();
+      // 4. If true, switch to next player
+    }
   }
 });
 
 btnHold.addEventListener("click", function () {
-  // 1. Add current score to active player score
-  scores[activePlayer] += currentScore;
-  document.getElementById(`score--${activePlayer}`).textContent =
-    scores[activePlayer];
+  if (playing) {
+    // 1. Add current score to active player score
+    scores[activePlayer] += currentScore;
+    document.getElementById(`score--${activePlayer}`).textContent =
+      scores[activePlayer];
 
-  // 2. Check score is >= 100
-  if (scores[activePlayer] >= 20) {
-    // 3. Finish the game
-    playing = false;
-    document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.add("player--winner");
-    document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.remove("player--active");
-  } else {
-    // 4. Switch to the next player
-    switchPlayer();
+    // 2. Check score is >= 100
+    if (scores[activePlayer] >= 20) {
+      // 3. Finish the game
+      playing = false;
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add("player--winner");
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove("player--active");
+    } else {
+      // 4. Switch to the next player
+      switchPlayer();
+    }
   }
 });
