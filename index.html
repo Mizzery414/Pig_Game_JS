@@ -11,6 +11,21 @@
 
 <body>
     <main>
+        <button class="show-modal">Rules</button>
+        <div class="modal hidden">
+            <button class="close-modal">&times;</button>
+            <h1>Rules 😍</h1>
+            <p>
+                Welcome to the Pig Game! <br>
+                The first player to 100 wins, but if you roll a 1 you lose your points, and your turn! <br>
+                Roll Die will roll again<br>
+                Hold to pass the die to the next player.<br>
+                New Game will reset the board<br>
+                Press Escape to close this message and start rolling!
+            </p>
+        </div>
+        <div class="overlay hidden"></div>
+
         <section class="player player--0 player--active">
             <h2 class="name" id="name--0">Player 1</h2>
             <p class="score" id="score--0">43</p>
